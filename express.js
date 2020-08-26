@@ -54,7 +54,7 @@ app.post(`/api/generate/:id`, async function (req, res) {
     }
     
     async function run() {
-        let browser = await puppeteer.launch({ headless: false });
+        let browser = await puppeteer.launch({ headless: false , args: ['--no-sandbox', '--disable-setuid-sandbox']});
         let page = await browser.newPage();
         await page.setRequestInterception(true);
         page.on('request', interceptedRequest => {
