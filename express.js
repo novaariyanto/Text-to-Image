@@ -42,7 +42,7 @@ app.get('/gethtml2', (req, res) => {
 app.post(`/api/generate/:id`, async function (req, res) {
     var text = req.body.text
     var number = req.body.number
-    
+    let code = makeid(5);
     const puppeteer = require('puppeteer');
     var id = req.params.id;
     var host = req.headers.host;
@@ -54,7 +54,7 @@ app.post(`/api/generate/:id`, async function (req, res) {
     }
     
     async function run() {
-        let browser = await puppeteer.launch({ headless: true });
+        let browser = await puppeteer.launch({ headless: false });
         let page = await browser.newPage();
         await page.setRequestInterception(true);
         page.on('request', interceptedRequest => {
@@ -78,7 +78,7 @@ app.post(`/api/generate/:id`, async function (req, res) {
         await page.waitForSelector('.bbx')
         const element = await page.$('.bbx')
         await element.screenshot({
-            path: `public/${number}.jpg`,
+            path: `public/${number}_${code}.jpg`,
             type: "jpeg"
         });
         await browser.close();
@@ -90,14 +90,24 @@ app.post(`/api/generate/:id`, async function (req, res) {
           success : true,
           message : '',
           data : {
-            imgurl : `${host}/assets/${number}.jpg`
+            imgurl : `${host}/assets/${number}_${code}.jpg`
           }
       }
     res.send(respons)
-  }, 3000);
+  }, 5000);
 
 
 });
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
+ 
 
 app.listen(3032, (req, res) => {
     console.log('running in port 3032')
