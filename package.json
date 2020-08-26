@@ -8,7 +8,10 @@
   "author": "FRIN Yvonnick <frin.yvonnick@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "handlebars": "^4.5.3",
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
     "puppeteer": "3.0.0",
     "puppeteer-cluster": "^0.21.0"
   },

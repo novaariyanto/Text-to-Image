@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @font-face /*perintah untuk memanggil font eksternal*/
+      {
+        font-family: 'Frus'; /*memberikan nama bebas untuk font*/
+        src: url('assets/fonts/frus/frus.TTF');/*memanggil file font eksternalnya di folder nexa*/
+      }
+    @font-face /*perintah untuk memanggil font eksternal*/
+      {
+        font-family: 'Alanis'; /*memberikan nama bebas untuk font*/
+        src: url('assets/fonts/alanis-hand/AlanisHand.ttf');/*memanggil file font eksternalnya di folder nexa*/
+      }
+      p{
+        font-family: 'Alanis';
+      }
+      h2
+      {
+        font-family: 'Alanis';
+      }
+
+
+    .style-tulis {
+      margin-top: 112px;
+      margin-left: 52pt;
+      color: #605b62;
+      font-size: 20pt;
+      line-height: 25pt;
+     
+    }
+
+    .gambar {
+      margin: auto;
+      width: 100%;
+      height: 100%;
+
+    }
+
+    .bbx {
+      border: transparent 1px solid;
+      width: 100%;
+      margin: auto;
+      height: 1000px;
+      background: url("assets/background/book.jpg");
+         background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bbx" id="page">
+    <div class="gambar">
+      <div class="style-tulis">
+        <p>{{body}}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
